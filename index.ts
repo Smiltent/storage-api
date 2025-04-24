@@ -60,6 +60,6 @@ app.get('/', (_req, res) => {
     res.redirect("https://github.com/Smiltent/storage-api")
 })
 
-app.listen(3000, () => {
-    console.log('Server is running on 0.0.0.0:3000')
+app.listen(process.env.PORT, () => {
+    console.log(`Server is running on 0.0.0.0:${process.env.PORT}`)
 })
