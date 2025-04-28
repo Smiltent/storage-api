@@ -39,7 +39,7 @@ app.post('/v1/upload', (req, res) => {
         const extension = path.extname(file?.name as string);
         const uuid = uuidv4();
 
-        file?.mv(path.join(__dirname, 'files', `${uuid}.${extension}`), (err) => {
+        file?.mv(path.join(__dirname, 'files', `${uuid}${extension}`), (err) => {
             if (err) {
                 res.status(400).send({ res: `Failed to save file` });
                 return;
