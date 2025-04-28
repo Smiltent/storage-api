@@ -37,11 +37,10 @@ app.post('/v1/upload', (req, res) => {
         const file = Array.isArray(req.files.file) ? req.files.file[0] : req.files.file;
 
         const extension = path.extname(file?.name as string);
-        const uploadPath = path.join(__dirname, 'files', `${uuidv4()}${extension}`);
 
-        file?.mv(uploadPath, (err) => {
+        file?.mv(path.join(__dirname, 'files', `${uuidv4()}${extension}`), (err) => {
             if (err) {
-                res.status(500).send('Failed to save the file!\n');
+                res.status(400).send({ res: `Failed to save file` })
                 return
             }
             res.status(200).send({ res: `${process.env.URL}/files/${uuidv4()}${extension}` })
@@ -53,7 +52,7 @@ app.post('/v1/upload', (req, res) => {
 })
 
 app.get('/v1/data', (req, res) => {
-
+    res.status(200).send()
 })
 
 app.get('/', (_req, res) => {
