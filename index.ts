@@ -60,7 +60,7 @@ app.post('/v1/upload', (req, res) => {
             data.amountOfFiles += 1;
 
             fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 4));
-            res.status(200).send({ res: `${process.env.URL}/files/${uuid}.${extension}` });
+            res.status(200).send({ res: `${process.env.URL}/files/${uuid}${extension}` });
         });
 
     } else {
